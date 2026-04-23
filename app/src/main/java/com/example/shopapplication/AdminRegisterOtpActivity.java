@@ -62,11 +62,11 @@ public class AdminRegisterOtpActivity extends AppCompatActivity {
                                 btnVerify.setEnabled(true);
                                 if (regResponse.contains("\"success\":true")) {
                                     Toast.makeText(AdminRegisterOtpActivity.this, "Admin registered! Please login.", Toast.LENGTH_LONG).show();
-                                    startActivity(new Intent(AdminRegisterOtpActivity.this, OwnerLoginActivity.class));
+                                    startActivity(new Intent(AdminRegisterOtpActivity.this, AdminLoginActivity.class));
                                     finish();
                                 } else if (regResponse.contains("Username already exists")) {
                                     Toast.makeText(AdminRegisterOtpActivity.this, "Admin already exists. Please login.", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(AdminRegisterOtpActivity.this, OwnerLoginActivity.class));
+                                    startActivity(new Intent(AdminRegisterOtpActivity.this, AdminLoginActivity.class));
                                     finish();
                                 } else {
                                     Toast.makeText(AdminRegisterOtpActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
