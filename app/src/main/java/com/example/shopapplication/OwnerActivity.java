@@ -35,7 +35,6 @@ public class OwnerActivity extends AppCompatActivity {
 
         findViewById(R.id.btnRefresh).setOnClickListener(v -> loadOrders());
         findViewById(R.id.btnLogout).setOnClickListener(v -> logout());
-        findViewById(R.id.btnReset).setOnClickListener(v -> resetAllData());
 
         loadOrders();
     }

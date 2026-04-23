@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class OwnerLoginActivity extends AppCompatActivity {
+public class AdminLoginActivity extends AppCompatActivity {
 
     private EditText etEmail, etPassword;
     private Button btnLogin;
@@ -15,7 +15,7 @@ public class OwnerLoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_owner_login);
+        setContentView(R.layout.activity_admin_login);
 
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
@@ -50,11 +50,11 @@ public class OwnerLoginActivity extends AppCompatActivity {
                 runOnUiThread(() -> {
                     btnLogin.setEnabled(true);
                     if (response.contains("\"success\":true")) {
-                        SessionManager.getInstance(OwnerLoginActivity.this).setAdminLoggedIn(true);
-                        startActivity(new Intent(OwnerLoginActivity.this, OwnerActivity.class));
+                        SessionManager.getInstance(AdminLoginActivity.this).setAdminLoggedIn(true);
+                        startActivity(new Intent(AdminLoginActivity.this, OwnerActivity.class));
                         finish();
                     } else {
-                        Toast.makeText(OwnerLoginActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AdminLoginActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -63,7 +63,7 @@ public class OwnerLoginActivity extends AppCompatActivity {
             public void onError(String error) {
                 runOnUiThread(() -> {
                     btnLogin.setEnabled(true);
-                    Toast.makeText(OwnerLoginActivity.this, "Error: " + error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminLoginActivity.this, "Error: " + error, Toast.LENGTH_SHORT).show();
                 });
             }
         });

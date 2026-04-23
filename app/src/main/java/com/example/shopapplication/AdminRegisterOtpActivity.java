@@ -53,7 +53,8 @@ public class AdminRegisterOtpActivity extends AppCompatActivity {
             public void onSuccess(String response) {
                 if (response.contains("\"success\":true")) {
                     // OTP verified, now register admin
-                    String registerBody = "{\"username\":\"" + email.split(\"@\")[0] + "\",\"password\":\"" + password + "\"}";
+                    String username = email.substring(0, email.indexOf("@"));
+                    String registerBody = "{\"username\":\"" + username + "\",\"password\":\"" + password + "\"}";
                     ApiClient.post("/admin/register", registerBody, new ApiClient.Callback() {
                         @Override
                         public void onSuccess(String regResponse) {

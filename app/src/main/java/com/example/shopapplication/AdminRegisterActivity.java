@@ -21,6 +21,7 @@ public class AdminRegisterActivity extends AppCompatActivity {
         btnSendOtp = findViewById(R.id.btnSendOtp);
 
         findViewById(R.id.btnLogin).setOnClickListener(v -> {
+            startActivity(new Intent(this, AdminLoginActivity.class));
             finish();
         });
 

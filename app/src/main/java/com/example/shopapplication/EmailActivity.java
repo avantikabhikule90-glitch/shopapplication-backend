@@ -43,7 +43,7 @@ public class EmailActivity extends AppCompatActivity {
         });
 
         btnAdminLogin.setOnClickListener(v -> {
-            startActivity(new Intent(this, OwnerLoginActivity.class));
+            startActivity(new Intent(this, AdminLoginActivity.class));
         });
     }
 

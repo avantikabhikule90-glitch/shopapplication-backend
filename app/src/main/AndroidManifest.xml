@@ -38,6 +38,8 @@
         <activity android:name=".ShopHomeActivity" android:exported="false"/>
         <activity android:name=".CartActivity" android:exported="false"/>
         <activity android:name=".OrdersActivity" android:exported="false"/>
+        <activity android:name=".AdminLoginActivity" android:exported="false"
+            android:theme="@style/Theme.ShopApplication.NoActionBar"/>
         <activity android:name=".OwnerLoginActivity" android:exported="false"
             android:theme="@style/Theme.ShopApplication.NoActionBar"/>
         <activity android:name=".OwnerActivity" android:exported="false"/>
