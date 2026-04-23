@@ -47,4 +47,11 @@ public class SessionManager {
         editor.clear();
         editor.apply();
     }
+
+    public void setAdminLoggedIn(boolean isAdmin) {
+        editor.putString("token", "admin_token");
+        editor.putString("email", "admin");
+        editor.putBoolean("isAdmin", isAdmin);
+        editor.apply();
+    }
 }

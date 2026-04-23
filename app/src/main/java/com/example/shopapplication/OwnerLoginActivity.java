@@ -50,7 +50,8 @@ public class OwnerLoginActivity extends AppCompatActivity {
                 runOnUiThread(() -> {
                     btnLogin.setEnabled(true);
                     if (response.contains("\"success\":true")) {
-                        SessionManager.getInstance(OwnerLoginActivity.this).setAdminLoggedIn(true);
+                        SessionManager session = new SessionManager(OwnerLoginActivity.this);
+                        session.setAdminLoggedIn(true);
                         startActivity(new Intent(OwnerLoginActivity.this, OwnerActivity.class));
                         finish();
                     } else {

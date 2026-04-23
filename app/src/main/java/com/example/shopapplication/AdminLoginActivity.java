@@ -50,7 +50,8 @@ public class AdminLoginActivity extends AppCompatActivity {
                 runOnUiThread(() -> {
                     btnLogin.setEnabled(true);
                     if (response.contains("\"success\":true")) {
-                        SessionManager.getInstance(AdminLoginActivity.this).setAdminLoggedIn(true);
+                        SessionManager session = new SessionManager(AdminLoginActivity.this);
+                        session.setAdminLoggedIn(true);
                         startActivity(new Intent(AdminLoginActivity.this, OwnerActivity.class));
                         finish();
                     } else {
