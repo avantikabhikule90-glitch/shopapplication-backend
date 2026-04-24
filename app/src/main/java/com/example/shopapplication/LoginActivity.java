@@ -78,6 +78,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onSuccess(String response) {
                 runOnUiThread(() -> {
                     setLoading(false);
+                    // Debug - show server response
+                    Toast.makeText(LoginActivity.this, "Response: " + response, Toast.LENGTH_SHORT).show();
                     if (response.contains("\"success\":true")) {
                         try {
                             org.json.JSONObject j = new org.json.JSONObject(response);
