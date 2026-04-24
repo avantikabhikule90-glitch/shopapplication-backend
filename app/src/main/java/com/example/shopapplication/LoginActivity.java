@@ -78,8 +78,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onSuccess(String response) {
                 runOnUiThread(() -> {
                     setLoading(false);
-                    // Debug - show server response
-                    Toast.makeText(LoginActivity.this, "Response: " + response, Toast.LENGTH_SHORT).show();
+                    // Show full server response for debugging
+                    android.util.Log.d("LOGIN", "Response: " + response);
+                    Toast.makeText(LoginActivity.this, "Server: " + response, Toast.LENGTH_LONG).show();
                     if (response.contains("\"success\":true")) {
                         try {
                             org.json.JSONObject j = new org.json.JSONObject(response);
@@ -89,11 +90,16 @@ public class LoginActivity extends AppCompatActivity {
                             finish();
                         } catch (Exception e) {
                             Toast.makeText(LoginActivity.this,
-                                    "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    "Error parsing: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     } else {
-                        Toast.makeText(LoginActivity.this,
-                                "Wrong password. Try again.", Toast.LENGTH_SHORT).show();
+                        // Show exact error from server
+                        String errorMsg = "Login failed";
+                        try {
+                            org.json.JSONObject j = new org.json.JSONObject(response);
+                            errorMsg = j.optString("message", "Login failed");
+                        } catch (Exception e) {}
+                        Toast.makeText(LoginActivity.this, errorMsg, Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -103,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                 runOnUiThread(() -> {
                     setLoading(false);
                     Toast.makeText(LoginActivity.this,
-                            "Connection error: " + error, Toast.LENGTH_SHORT).show();
+                            "Connection error: " + error, Toast.LENGTH_LONG).show();
                 });
             }
         });
