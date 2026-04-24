@@ -41,9 +41,11 @@ public class OwnerLoginActivity extends AppCompatActivity {
             return;
         }
 
+        String username = email.contains("@") ? email.substring(0, email.indexOf("@")) : email;
+        
         btnLogin.setEnabled(false);
 
-        String body = "{\"username\":\"" + email + "\",\"password\":\"" + password + "\"}";
+        String body = "{\"username\":\"" + username + "\",\"password\":\"" + password + "\"}";
         ApiClient.post("/admin/login", body, new ApiClient.Callback() {
             @Override
             public void onSuccess(String response) {
