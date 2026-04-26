@@ -19,7 +19,6 @@ public class ShopHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_home);
-
         session = new SessionManager(this);
         tvCartCount = findViewById(R.id.tvCartCount);
         tvPoints = findViewById(R.id.tvPoints);
